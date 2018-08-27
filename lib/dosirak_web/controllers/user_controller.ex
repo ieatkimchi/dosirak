@@ -3,6 +3,7 @@ defmodule DosirakWeb.UserController do
 
   alias Dosirak.Accounts
   alias Dosirak.Accounts.User
+  alias Dosirak.Guardian
 
   action_fallback(DosirakWeb.FallbackController)
 
@@ -12,11 +13,9 @@ defmodule DosirakWeb.UserController do
   end
 
   def create(conn, %{"user" => user_params}) do
-    with {:ok, %User{} = user} <- Accounts.create_user(user_params) do
-      conn
-      |> put_status(:created)
-      |> put_resp_header("location", user_path(conn, :show, user))
-      |> render("show.json", user: user)
+    with {:ok, %User{} = user} <- Accounts.create_user(user_params),
+         {:ok, token, _claims} <- Guardian.encode_and_sign(user) do
+      conn |> render("jwt.json", jwt: token)
     end
   end
 

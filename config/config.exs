@@ -23,3 +23,8 @@ config :logger, :console,
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
+
+# Guardian config
+config :dosirak, Dosirak.Guardian,
+       issuer: "dosirak",
+       secret_key: "GA1onX6CljSp5B2mspEyC9F09Vrynic2bY9ZemZuMscAMv+NkY/z8Nw+ogl9/BLa"
