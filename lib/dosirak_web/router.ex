@@ -3,13 +3,12 @@ defmodule DosirakWeb.Router do
 
   alias Dosirak.Guardian
 
-
   pipeline :api do
     plug(:accepts, ["json"])
   end
 
   pipeline :jwt_authenticated do
-    plug Guardian.AuthPipeline
+    plug(Guardian.AuthPipeline)
   end
 
   scope "/api/v1", DosirakWeb do
@@ -20,8 +19,8 @@ defmodule DosirakWeb.Router do
   end
 
   scope "/api/v1", DosirakWeb do
-    pipe_through [:api, :jwt_authenticated]
+    pipe_through([:api, :jwt_authenticated])
 
-    get "/my_user", UserController, :show
+    get("/my_user", UserController, :show)
   end
 end

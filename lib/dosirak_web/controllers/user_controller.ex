@@ -11,6 +11,7 @@ defmodule DosirakWeb.UserController do
     case Accounts.token_sign_in(email, password) do
       {:ok, token, _claims} ->
         conn |> render("jwt.json", jwt: token)
+
       _ ->
         {:error, :unauthorized}
     end

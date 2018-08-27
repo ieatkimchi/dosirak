@@ -26,5 +26,5 @@ import_config "#{Mix.env()}.exs"
 
 # Guardian config
 config :dosirak, Dosirak.Guardian,
-       issuer: "dosirak",
-       secret_key: "GA1onX6CljSp5B2mspEyC9F09Vrynic2bY9ZemZuMscAMv+NkY/z8Nw+ogl9/BLa"
+  issuer: "dosirak",
+  secret_key: "GA1onX6CljSp5B2mspEyC9F09Vrynic2bY9ZemZuMscAMv+NkY/z8Nw+ogl9/BLa"
