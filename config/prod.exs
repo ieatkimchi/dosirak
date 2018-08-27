@@ -18,8 +18,20 @@ config :dosirak, DosirakWeb.Endpoint,
   url: [host: "example.com", port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
+config :dosirak, DosirakWeb.Endpoint,
+  server: true, # Without this line, your app will not start the web server!
+  secret_key_base: "${SECRET_KEY_BASE}"
+
 # Do not print debug messages in production
-config :logger, level: :info
+config :logger, level: :info  
+
+config :dosirak, Dosirak.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  load_from_system_env: true,
+  url: "${DATABASE_URL}",
+  database: "",
+  # ssl: true,
+  pool_size: 1 # Free tier db only allows 1 connection
 
 # ## SSL Support
 #
@@ -57,8 +69,3 @@ config :logger, level: :info
 # start per endpoint:
 #
 #     config :dosirak, DosirakWeb.Endpoint, server: true
-#
-
-# Finally import the config/prod.secret.exs
-# which should be versioned separately.
-import_config "prod.secret.exs"
