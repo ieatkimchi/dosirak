@@ -8,6 +8,6 @@ defmodule DosirakWeb.Router do
   scope "/api/v1", DosirakWeb do
     pipe_through(:api)
 
-    resources("/users", UserController, only: [:create, :show])
+    post("/users", UserController, :create)
   end
 end
