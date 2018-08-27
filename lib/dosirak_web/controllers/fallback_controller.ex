@@ -17,4 +17,15 @@ defmodule DosirakWeb.FallbackController do
     |> put_status(:not_found)
     |> render(DosirakWeb.ErrorView, :"404")
   end
+
+  def call(conn, {:error, :unauthorized}) do
+    conn
+    |> put_status(:unauthorized)
+    |> json(%{error: "Login error"})
+  end
+
+  def auth_error(conn, {type, _reason}, _opts) do
+    body = Poison.encode!(%{error: to_string(type)})
+    send_resp(conn, 401, body)
+  end
 end
