@@ -11,7 +11,7 @@ defmodule Dosirak.Application do
       # Start the Ecto repository
       supervisor(Dosirak.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(DosirakWeb.Endpoint, []),
+      supervisor(DosirakWeb.Endpoint, [])
       # Start your own worker by calling: Dosirak.Worker.start_link(arg1, arg2, arg3)
       # worker(Dosirak.Worker, [arg1, arg2, arg3]),
     ]

@@ -4,7 +4,7 @@ defmodule DosirakWeb.UserController do
   alias Dosirak.Accounts
   alias Dosirak.Accounts.User
 
-  action_fallback DosirakWeb.FallbackController
+  action_fallback(DosirakWeb.FallbackController)
 
   def index(conn, _params) do
     users = Accounts.list_users()
@@ -35,6 +35,7 @@ defmodule DosirakWeb.UserController do
 
   def delete(conn, %{"id" => id}) do
     user = Accounts.get_user!(id)
+
     with {:ok, %User{}} <- Accounts.delete_user(user) do
       send_resp(conn, :no_content, "")
     end

@@ -3,15 +3,13 @@ defmodule Dosirak.Accounts.User do
   import Ecto.Changeset
   import Comeonin.Bcrypt, only: [hashpwsalt: 1]
 
-
-
   schema "users" do
-    field :email, :string
-    field :password_hash, :string
+    field(:email, :string)
+    field(:password_hash, :string)
 
     # Virtual fields:
-    field :password, :string, virtual: true
-    field :password_confirmation, :string, virtual: true
+    field(:password, :string, virtual: true)
+    field(:password_confirmation, :string, virtual: true)
 
     timestamps()
   end
@@ -30,11 +28,11 @@ defmodule Dosirak.Accounts.User do
 
   defp put_password_hash(changeset) do
     case changeset do
-      %Ecto.Changeset{valid?: true, changes: %{password: pass}}
-        ->
-          put_change(changeset, :password_hash, hashpwsalt(pass))
+      %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
+        put_change(changeset, :password_hash, hashpwsalt(pass))
+
       _ ->
-          changeset
+        changeset
     end
   end
 end
