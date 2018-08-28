@@ -16,7 +16,7 @@ use Mix.Config
 config :dosirak, DosirakWeb.Endpoint,
   load_from_system_env: true,
   # url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  # cache_static_manifest: "priv/static/cache_manifest.json"
 
 config :dosirak, DosirakWeb.Endpoint,
   server: true, # Without this line, your app will not start the web server!
