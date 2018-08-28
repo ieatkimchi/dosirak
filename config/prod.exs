@@ -28,7 +28,9 @@ config :logger, level: :info
 config :dosirak, Dosirak.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: "${DATABASE_URL}",
-  database: "",
+  database: "${DATABASE}",
+  username: "${USERNAME}",
+  password: "${PASSWORD}",
   ssl: true,
   pool_size: 1 # Free tier db only allows 1 connection
 
