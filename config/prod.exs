@@ -27,10 +27,9 @@ config :logger, level: :info
 
 config :dosirak, Dosirak.Repo,
   adapter: Ecto.Adapters.Postgres,
-  load_from_system_env: true,
   url: "${DATABASE_URL}",
   database: "",
-  # ssl: true,
+  ssl: true,
   pool_size: 1 # Free tier db only allows 1 connection
 
 # ## SSL Support
