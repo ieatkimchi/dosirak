@@ -27,6 +27,7 @@ config :logger, level: :info
 
 config :dosirak, Dosirak.Repo,
   adapter: Ecto.Adapters.Postgres,
+  load_from_system_env: true,
   url: "${DATABASE_URL}",
   database: "${DATABASE}",
   username: "${USERNAME}",
